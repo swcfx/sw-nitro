@@ -16,6 +16,12 @@ local function NitroLoop(lastVehicle)
     return 0
   end
 
+  local model = GetEntityModel(vehicle)
+
+  if not IsThisModelACar(model) then
+    return 0
+  end
+
   local isEnabled = IsControlPressed(0, INPUT_CHARACTER_WHEEL)
   local isDriving = IsControlPressed(0, INPUT_VEH_ACCELERATE)
   local isBoosting = IsVehicleNitroBoostEnabled(vehicle)
