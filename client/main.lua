@@ -24,10 +24,11 @@ local function NitroLoop(lastVehicle)
 
   local isEnabled = IsControlPressed(0, INPUT_CHARACTER_WHEEL)
   local isDriving = IsControlPressed(0, INPUT_VEH_ACCELERATE)
+  local isRunning = GetIsVehicleEngineRunning(vehicle)
   local isBoosting = IsVehicleNitroBoostEnabled(vehicle)
   local isPurging = IsVehicleNitroPurgeEnabled(vehicle)
 
-  if isEnabled then
+  if isRunning and isEnabled then
     if isDriving then
       if not isBoosting then
         SetVehicleNitroBoostEnabled(vehicle, true)
