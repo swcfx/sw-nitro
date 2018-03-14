@@ -18,7 +18,7 @@ local function NitroLoop(lastVehicle)
 
   local model = GetEntityModel(vehicle)
 
-  if not IsThisModelACar(model) then
+  if not IsThisModelACar(model) or IsVehicleElectric(vehicle) then
     return 0
   end
 
