@@ -1,5 +1,17 @@
 local vehicles = {}
 
+function SetNitroBoostScreenEffectsEnabled(enabled)
+  if enabled then
+    StopScreenEffect('RaceTurbo')
+    StartScreenEffect('RaceTurbo', 0, false)
+    SetTimecycleModifier('rply_motionblur')
+    ShakeGameplayCam('SKY_DIVING_SHAKE', 0.25)
+  else
+    StopGameplayCamShaking(true)
+    SetTransitionTimecycleModifier('default', 0.35)
+  end
+end
+
 function IsVehicleNitroBoostEnabled(vehicle)
   return vehicles[vehicle] == true
 end
@@ -10,13 +22,7 @@ function SetVehicleNitroBoostEnabled(vehicle, enabled)
   end
 
   if IsPedInVehicle(PlayerPedId(), vehicle) then
-    if enabled then
-      StopScreenEffect('RaceTurbo')
-      StartScreenEffect('RaceTurbo', 0, false)
-      ShakeGameplayCam('SKY_DIVING_SHAKE', 0.25)
-    else
-      StopGameplayCamShaking(true)
-    end
+    SetNitroBoostScreenEffectsEnabled(enabled)
   end
 
   SetVehicleBoostActive(vehicle, enabled)
