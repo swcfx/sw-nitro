@@ -1,5 +1,19 @@
 local INPUT_CHARACTER_WHEEL = 19
 local INPUT_VEH_ACCELERATE = 71
+local INPUT_VEH_DUCK = 73
+
+local function IsNitroControlPressed()
+  if not IsInputDisabled(2) then
+    DisableControlAction(2, INPUT_VEH_DUCK)
+    return IsDisabledControlPressed(2, INPUT_VEH_DUCK)
+  end
+
+  return IsControlPressed(0, INPUT_CHARACTER_WHEEL)
+end
+
+local function IsDrivingControlPressed()
+  return IsControlPressed(0, INPUT_VEH_ACCELERATE)
+end
 
 local function NitroLoop(lastVehicle)
   local player = PlayerPedId()
@@ -22,8 +36,8 @@ local function NitroLoop(lastVehicle)
     return 0
   end
 
-  local isEnabled = IsControlPressed(0, INPUT_CHARACTER_WHEEL)
-  local isDriving = IsControlPressed(0, INPUT_VEH_ACCELERATE)
+  local isEnabled = IsNitroControlPressed()
+  local isDriving = IsDrivingControlPressed()
   local isRunning = GetIsVehicleEngineRunning(vehicle)
   local isBoosting = IsVehicleNitroBoostEnabled(vehicle)
   local isPurging = IsVehicleNitroPurgeEnabled(vehicle)
