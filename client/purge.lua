@@ -1,3 +1,38 @@
+-- local DEFAULT_PURGE_CONFIG = {
+--   infernus = {
+--     [1] = {
+--       scale: 0.5,
+--       density: 3,
+--       color: { 255, 255, 255 },
+--       position: { 0.0, 0.0, 0.0 },
+--       rotation: { 0.0, 0.0, 0.0 }
+--     }
+--   }
+-- }
+
+--------------------------------------------------------------------------------
+
+-- local modelConfig = {}
+-- local entityConfig = {}
+--
+-- local function AddVehicleModelNitroPurgeNozzle() end
+-- local function RemoveVehicleModelNitroPurgeNozzle() end
+-- local function SetVehicleModelNitroPurgeNozzleScale() end
+-- local function SetVehicleModelNitroPurgeNozzleDensity() end
+-- local function SetVehicleModelNitroPurgeNozzleColor() end
+-- local function SetVehicleModelNitroPurgeNozzlePosition() end
+-- local function SetVehicleModelNitroPurgeNozzleRotation() end
+--
+-- local function AddVehicleNitroPurgeNozzle() end
+-- local function RemoveVehicleNitroPurgeNozzle() end
+-- local function SetVehicleNitroPurgeNozzleScale() end
+-- local function SetVehicleNitroPurgeNozzleDensity() end
+-- local function SetVehicleNitroPurgeNozzleColor() end
+-- local function SetVehicleNitroPurgeNozzlePosition() end
+-- local function SetVehicleNitroPurgeNozzleRotation() end
+
+--------------------------------------------------------------------------------
+
 local vehicles = {}
 local particles = {}
 
