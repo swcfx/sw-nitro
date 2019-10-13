@@ -26,6 +26,13 @@ function CreateVehiclePurgeSpray(vehicle, xOffset, yOffset, zOffset, xRot, yRot,
   return StartParticleFxLoopedOnEntity('ent_sht_steam', vehicle, xOffset, yOffset, zOffset, xRot, yRot, zRot, scale, false, false, false)
 end
 
+function CreateVehicleLightTrail(vehicle, bone, scale)
+  UseParticleFxAssetNextCall('core')
+  local ptfx = StartParticleFxLoopedOnEntityBone('veh_light_red_trail', vehicle, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, bone, scale, false, false, false)
+  SetParticleFxLoopedEvolution(ptfx, "speed", 1.0, false)
+  return ptfx
+end
+
 -- function CreateVehiclePurgeSpray(vehicle, xOffset, yOffset, zOffset, xRot, yRot, zRot, scale, density, r, g, b)
 --   local boneIndex = GetEntityBoneIndexByName(vehicle, 'bonnet')
 --   local pos = GetWorldPositionOfEntityBone(vehicle, boneIndex)

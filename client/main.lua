@@ -22,6 +22,7 @@ local function NitroLoop(lastVehicle)
 
   if lastVehicle ~= 0 and lastVehicle ~= vehicle then
     SetVehicleNitroBoostEnabled(lastVehicle, false)
+    SetVehicleLightTrailEnabled(lastVehicle, false)
     SetVehicleNitroPurgeEnabled(lastVehicle, false)
     TriggerServerEvent('nitro:__sync', false, false, true)
   end
@@ -46,18 +47,21 @@ local function NitroLoop(lastVehicle)
     if isDriving then
       if not isBoosting then
         SetVehicleNitroBoostEnabled(vehicle, true)
+        SetVehicleLightTrailEnabled(vehicle, true)
         SetVehicleNitroPurgeEnabled(vehicle, false)
         TriggerServerEvent('nitro:__sync', true, false, false)
       end
     else
       if not isPurging then
         SetVehicleNitroBoostEnabled(vehicle, false)
+        SetVehicleLightTrailEnabled(vehicle, false)
         SetVehicleNitroPurgeEnabled(vehicle, true)
         TriggerServerEvent('nitro:__sync', false, true, false)
       end
     end
   elseif isBoosting or isPurging then
     SetVehicleNitroBoostEnabled(vehicle, false)
+    SetVehicleLightTrailEnabled(vehicle, false)
     SetVehicleNitroPurgeEnabled(vehicle, false)
     TriggerServerEvent('nitro:__sync', false, false, false)
   end
@@ -104,5 +108,6 @@ AddEventHandler('nitro:__update', function (playerServerId, boostEnabled, purgeE
   local driver = GetPedInVehicleSeat(vehicle, -1)
 
   SetVehicleNitroBoostEnabled(vehicle, boostEnabled)
+  SetVehicleLightTrailEnabled(vehicle, boostEnabled)
   SetVehicleNitroPurgeEnabled(vehicle, purgeEnabled)
 end)
