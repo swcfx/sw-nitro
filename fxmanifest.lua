@@ -7,7 +7,7 @@ author 'Deltanic - https://github.com/Deltanic/'
 url 'https://github.com/swcfx/sw-nitro'
 
 client_script 'client/utils.lua'
--- client_script 'client/fuel.lua'
+client_script 'client/fuel.lua'
 client_script 'client/ptfx.lua'
 client_script 'client/boost.lua'
 client_script 'client/purge.lua'
