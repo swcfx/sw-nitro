@@ -1,4 +1,3 @@
-
 local vehicles = {}
 local lastNitro = 0
 local nitroCooldown = 2500 -- TODO: per-vehicle cooldown?
@@ -18,11 +17,11 @@ function DrainNitroFuel(vehicle, purge)
   if not purge then
     purge = false
   end
-  
+
   if not vehicles[vehicle] then
     vehicles[vehicle] = nitroFuelSize
   end
-  
+
   if vehicles[vehicle] > 0 then
     if purge then
       vehicles[vehicle] = vehicles[vehicle] - nitroFuelDrainRate * 2
@@ -37,7 +36,7 @@ function RechargeNitroFuel(vehicle)
   if not vehicles[vehicle] then
     vehicles[vehicle] = nitroFuelSize
   end
-  
+
   if vehicles[vehicle] and vehicles[vehicle] < nitroFuelSize then
     vehicles[vehicle] = vehicles[vehicle] + nitroRechargeRate
   end
@@ -47,7 +46,7 @@ function GetNitroFuelLevel(vehicle)
   if vehicles[vehicle] then
     return math.max(0, vehicles[vehicle])
   end
-  
+
   return 0
 end
 
@@ -67,13 +66,12 @@ Citizen.CreateThread(function ()
     if vehicle == 0 or driver ~= player or not isRunning then
       return
     end
-  
-  if isRunning then
-    if isBoosting == false and isPurging == false and GetGameTimer() > lastNitro + nitroCooldown then
-      RechargeNitroFuel(vehicle)
+
+    if isRunning then
+      if isBoosting == false and isPurging == false and GetGameTimer() > lastNitro + nitroCooldown then
+        RechargeNitroFuel(vehicle)
+      end
     end
-  end
-  
   end
 
   while true do
