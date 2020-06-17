@@ -33,6 +33,21 @@ function CreateVehicleLightTrail(vehicle, bone, scale)
   return ptfx
 end
 
+function StopVehicleLightTrail(ptfx, duration)
+  Citizen.CreateThread(function()
+    local startTime = GetGameTimer()
+    local endTime = GetGameTimer() + duration
+    while GetGameTimer() < endTime do 
+      Citizen.Wait(0)
+      local now = GetGameTimer()
+      local scale = (endTime - now) / duration
+      SetParticleFxLoopedScale(ptfx, scale)
+      SetParticleFxLoopedAlpha(ptfx, scale)
+    end
+    StopParticleFxLooped(ptfx)
+  end)
+end
+
 -- function CreateVehiclePurgeSpray(vehicle, xOffset, yOffset, zOffset, xRot, yRot, zRot, scale, density, r, g, b)
 --   local boneIndex = GetEntityBoneIndexByName(vehicle, 'bonnet')
 --   local pos = GetWorldPositionOfEntityBone(vehicle, boneIndex)

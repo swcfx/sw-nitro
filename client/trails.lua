@@ -26,7 +26,7 @@ function SetVehicleLightTrailEnabled(vehicle, enabled)
   else
     if particles[vehicle] and #particles[vehicle] > 0 then
       for _, particleId in ipairs(particles[vehicle]) do
-        StopParticleFxLooped(particleId)
+        StopVehicleLightTrail(particleId, 500)
       end
     end
 
