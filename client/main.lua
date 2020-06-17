@@ -15,6 +15,11 @@ local function IsDrivingControlPressed()
   return IsControlPressed(0, INPUT_VEH_ACCELERATE)
 end
 
+local function SyncState(boostEnabled, purgeEnabled, isLastVehicle)
+  local playerServerId = GetPlayerServerId(PlayerId())
+  return TriggerServerEvent('nitro:__sync', playerServerId, boostEnabled, purgeEnabled, isLastVehicle)
+end
+
 local function NitroLoop(lastVehicle)
   local player = PlayerPedId()
   local vehicle = GetVehiclePedIsIn(player)
@@ -24,7 +29,7 @@ local function NitroLoop(lastVehicle)
     SetVehicleNitroBoostEnabled(lastVehicle, false)
     SetVehicleLightTrailEnabled(lastVehicle, false)
     SetVehicleNitroPurgeEnabled(lastVehicle, false)
-    TriggerServerEvent('nitro:__sync', false, false, true)
+    SyncState(false, false, true)
   end
 
   if vehicle == 0 or driver ~= player then
@@ -53,21 +58,21 @@ local function NitroLoop(lastVehicle)
         SetVehicleNitroBoostEnabled(vehicle, true)
         SetVehicleLightTrailEnabled(vehicle, true)
         SetVehicleNitroPurgeEnabled(vehicle, false)
-        TriggerServerEvent('nitro:__sync', true, false, false)
+        SyncState(true, false, false)
       end
     else
       if not isPurging then
         SetVehicleNitroBoostEnabled(vehicle, false)
         SetVehicleLightTrailEnabled(vehicle, false)
         SetVehicleNitroPurgeEnabled(vehicle, true)
-        TriggerServerEvent('nitro:__sync', false, true, false)
+        SyncState(false, true, false)
       end
     end
   elseif isBoosting or isPurging then
     SetVehicleNitroBoostEnabled(vehicle, false)
     SetVehicleLightTrailEnabled(vehicle, false)
     SetVehicleNitroPurgeEnabled(vehicle, false)
-    TriggerServerEvent('nitro:__sync', false, false, false)
+    SyncState(false, false, false)
   end
 
   return vehicle
@@ -83,7 +88,7 @@ Citizen.CreateThread(function ()
 end)
 
 RegisterNetEvent('nitro:__update')
-AddEventHandler('nitro:__update', function (playerServerId, boostEnabled, purgeEnabled, lastVehicle)
+AddEventHandler('nitro:__update', function (playerServerId, boostEnabled, purgeEnabled, isLastVehicle)
   local playerId = GetPlayerFromServerId(playerServerId)
 
   -- Sometimes, the source player is disconnected from our session. If we don't
@@ -108,7 +113,7 @@ AddEventHandler('nitro:__update', function (playerServerId, boostEnabled, purgeE
   end
 
   local player = GetPlayerPed(playerId)
-  local vehicle = GetVehiclePedIsIn(player, lastVehicle)
+  local vehicle = GetVehiclePedIsIn(player, isLastVehicle)
   local driver = GetPedInVehicleSeat(vehicle, -1)
 
   SetVehicleNitroBoostEnabled(vehicle, boostEnabled)

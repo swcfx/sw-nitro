@@ -1,11 +1,8 @@
 RegisterNetEvent('nitro:__sync')
-AddEventHandler('nitro:__sync', function (boostEnabled, purgeEnabled, lastVehicle)
-  -- Fix for source reference being lost during loop below.
-  local source = source
-
-  for _, player in ipairs(GetPlayers()) do
-    if player ~= tostring(source) then
-      TriggerClientEvent('nitro:__update', player, source, boostEnabled, purgeEnabled, lastVehicle)
+AddEventHandler('nitro:__sync', function (sourcePlayerId, boostEnabled, purgeEnabled, isLastVehicle)
+  for _, playerId in ipairs(GetPlayers()) do
+    if playerId ~= tostring(playerId) then
+      TriggerClientEvent('nitro:__update', playerId, sourcePlayerId, boostEnabled, purgeEnabled, isLastVehicle)
     end
   end
 end)
