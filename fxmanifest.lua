@@ -1,8 +1,8 @@
 fx_version 'bodacious'
 game 'gta5'
 
-name 'shockwave-nitro'
-description 'Nitro System'
+name 'sw-nitro'
+description 'The most advanced nitro system for FiveM'
 author 'Deltanic - https://github.com/Deltanic/'
 url 'https://github.com/swcfx/sw-nitro'
 
