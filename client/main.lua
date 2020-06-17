@@ -36,19 +36,24 @@ local function NitroLoop(lastVehicle)
   if not IsThisModelACar(model) or IsVehicleElectric(vehicle) then
     return 0
   end
+  
+  InitNitroFuel(vehicle)
 
   local isEnabled = IsNitroControlPressed()
   local isDriving = IsDrivingControlPressed()
   local isRunning = GetIsVehicleEngineRunning(vehicle)
   local isBoosting = IsVehicleNitroBoostEnabled(vehicle)
   local isPurging = IsVehicleNitroPurgeEnabled(vehicle)
+  local isFueled = GetNitroFuelLevel(vehicle) > 0
 
-  if isRunning and isEnabled then
+  if isRunning and isEnabled and isFueled then
+	DrainNitroFuel(vehicle, isPurging)
     if isDriving then
       if not isBoosting then
         SetVehicleNitroBoostEnabled(vehicle, true)
         SetVehicleLightTrailEnabled(vehicle, true)
         SetVehicleNitroPurgeEnabled(vehicle, false)
+		-- DrainNitroFuel(vehicle)
         TriggerServerEvent('nitro:__sync', true, false, false)
       end
     else
