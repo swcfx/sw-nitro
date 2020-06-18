@@ -32,18 +32,3 @@ Controls
 
 - **Keyboard**: Hold `INPUT_CHARACTER_WHEEL` (Default: left ALT)
 - **Gamepad:** Hold `INPUT_VEH_DUCK` (Default: A on Xbox, X on DualShock)
-
-Demo
-----
-
-TODO
-
-Download
---------
-
-TODO
-
-Support
--------
-
-TODO
