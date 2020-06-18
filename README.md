@@ -1,7 +1,7 @@
-FiveM Nitro system
-==================
+Advanced nitro system for FiveM
+===============================
 
-The most advanced nitro system for FiveM, inspired by the Need for Speed: Underground series.
+The most advanced nitro system for FiveM, inspired by the Need for Speed: Underground series. Works out of the box, no configuration is required. 
 
 Features
 --------
