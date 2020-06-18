@@ -10,7 +10,7 @@ Features
 - Exhaust particles
 - NOS purge
 - Light trails
-- Nitro fuel system
+<!-- - Nitro fuel system -->
 - Screen effects
 - Fully synced
 - Controller support
