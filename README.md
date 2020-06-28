@@ -3,8 +3,6 @@ Advanced nitro system for FiveM
 
 The most advanced nitro system for FiveM, inspired by the Need for Speed: Underground series. Works out of the box, no configuration is required.
 
-https://forum.cfx.re/t/release-advanced-nitro-system/1367822
-
 Features
 --------
 
@@ -12,10 +10,10 @@ Features
 - Exhaust particles
 - NOS purge
 - Light trails
-<!-- - Nitro fuel system -->
 - Screen effects
 - Fully synced
 - Controller support
+<!-- - Nitro fuel system -->
 
 <!--
 Planned features:
@@ -38,7 +36,8 @@ Controls
 Download
 --------
 
-- [sw-nitro v1.0](https://github.com/swcfx/sw-nitro/releases/tag/v1.0)
+The latest version can be found on the [releases](https://github.com/swcfx/sw-nitro/releases/latest) page. <br/>
+For support, please refer to the [forum topic](https://forum.cfx.re/t/release-advanced-nitro-system/1367822).
 
 [Demo](https://www.youtube.com/watch?v=ffXwTkMR4vU)
 ---------------------------------------------------
