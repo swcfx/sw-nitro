@@ -21,7 +21,7 @@ function SetVehicleNitroBoostEnabled(vehicle, enabled)
     return
   end
 
-  if IsPedInVehicle(PlayerPedId(), vehicle) then
+  if IsPedInVehicle(PlayerPedId(), vehicle) or not enabled then
     SetNitroBoostScreenEffectsEnabled(enabled)
   end
 
