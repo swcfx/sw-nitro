@@ -15,8 +15,8 @@ function CreateVehicleExhaustBackfire(vehicle, scale)
       local pos = GetWorldPositionOfEntityBone(vehicle, boneIndex)
       local off = GetOffsetFromEntityGivenWorldCoords(vehicle, pos.x, pos.y, pos.z)
 
-      UseParticleFxAssetNextCall('core')
-      StartParticleFxNonLoopedOnEntity('veh_backfire', vehicle, off.x, off.y, off.z, 0.0, 0.0, 0.0, scale, false, false, false)
+      UseParticleFxAsset('veh_xs_vehicle_mods')
+      StartParticleFxNonLoopedOnEntity('veh_nitrous', vehicle, off.x, off.y, off.z, 0.0, 0.0, 0.0, scale, false, false, false)
     end
   end
 end
@@ -71,12 +71,12 @@ end
 --   local particles = {}
 --
 --   for i = 0, density do
---     UseParticleFxAssetNextCall('core')
---     local fx1 = StartParticleFxLoopedOnEntity('ent_sht_steam', vehicle, off.x - 0.5, off.y + 0.05, off.z, 40.0, -20.0, 0.0, 0.5, false, false, false)
---     SetParticleFxLoopedColour(fx1, r, g, b)
---
---     UseParticleFxAssetNextCall('core')
---     local fx2 = StartParticleFxLoopedOnEntity('ent_sht_steam', vehicle, off.x + 0.5, off.y + 0.05, off.z, 40.0, 20.0, 0.0, 0.5, false, false, false)
---     SetParticleFxLoopedColour(fx2, r, g, b)
---   end
--- end
+  --     UseParticleFxAssetNextCall('core')
+  --     local fx1 = StartParticleFxLoopedOnEntity('ent_sht_steam', vehicle, off.x - 0.5, off.y + 0.05, off.z, 40.0, -20.0, 0.0, 0.5, false, false, false)
+  --     SetParticleFxLoopedColour(fx1, r, g, b)
+  --
+  --     UseParticleFxAssetNextCall('core')
+  --     local fx2 = StartParticleFxLoopedOnEntity('ent_sht_steam', vehicle, off.x + 0.5, off.y + 0.05, off.z, 40.0, 20.0, 0.0, 0.5, false, false, false)
+  --     SetParticleFxLoopedColour(fx2, r, g, b)
+  --   end
+  -- end

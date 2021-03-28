@@ -32,16 +32,17 @@ end
 Citizen.CreateThread(function ()
   local function BackfireLoop()
     -- TODO: Only do this for nearby vehicles.
-    for vehicle in pairs(vehicles) do
-      CreateVehicleExhaustBackfire(vehicle, 1.25)
+      for vehicle in pairs(vehicles) do
+        --CreateVehicleExhaustBackfire(vehicle, 1.25)
+        SetVehicleNitroEnabled(vehicle, true, 0.0, 0.0, 0.0, true)
+      end
     end
-  end
 
-  while true do
-    Citizen.Wait(0)
-    BackfireLoop()
-  end
-end)
+    while true do
+      Citizen.Wait(0)
+      BackfireLoop()
+    end
+  end)
 
 Citizen.CreateThread(function ()
   local function BoostLoop()
